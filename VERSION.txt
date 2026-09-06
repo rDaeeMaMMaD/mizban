@@ -1,0 +1,26 @@
+Mizban (میزبان) AI Gateway
+Version: 10.6.1
+Date: 2026-07-13
+
+v10.6.1 Fixes:
+  - FAILOVER_MAX_PROVIDERS: 4 -> 10 (so all providers get tried)
+    Problem: if the first providers fail (empty balance etc.), NVIDIA/OpenRouter/GapGPT
+    were never attempted.
+  - Gemini models: removed invalid gemini-3.5-flash -> gemini-2.0-flash + 2.5 + 1.5
+  - GeminiDriver: removed fallback to /interactions (invalid endpoint)
+  - Migration SQL for existing databases (remove old model + reset keys)
+
+v10.6.0 Fixes:
+  - Gemini: fixed endpoint from /interactions to /models/{model}:generateContent
+  - classify_error: semantic error classification (HTML = driver_error, monthly quota = not retryable)
+  - 429 with "monthly/quota/plan" = quota_exhausted (NOT retryable)
+  - 403 HTML = driver_error (NOT retryable, skip to next provider)
+  - No keys permanently disabled — all errors just cooldown
+
+Providers (default seed): Z.ai, RapidAPI, DeepSeek, NVIDIA, OpenRouter, Gemini, GapGPT
+
+Open-source release notes (v10.6.1-oss):
+  - Removed all hardcoded secrets (MASTER_SECRET, cron token, provider API keys,
+    default client secrets, real CORS domains) from the repository.
+  - Configuration is now environment-driven (.env / MIZBAN_* variables).
+  - Admin panel is bilingual (fa/en).

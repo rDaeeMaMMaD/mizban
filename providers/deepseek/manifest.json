@@ -1,0 +1,14 @@
+{
+  "slug": "deepseek",
+  "name": "دیپ‌سیک (DeepSeek)",
+  "type": "chat",
+  "baseurl": "https://api.deepseek.com",
+  "driver": "OpenAICompatibleDriver",
+  "actions": ["chat", "models"],
+  "default_model": "deepseek-chat",
+  "models": [
+    {"model_id": "deepseek-chat", "name": "DeepSeek Chat", "fallback": "gpt-4o-mini"},
+    {"model_id": "deepseek-v4-flash", "name": "DeepSeek V4 Flash", "fallback": "gpt-4o-mini"},
+    {"model_id": "deepseek-v4-pro", "name": "DeepSeek V4 Pro", "fallback": "gpt-4o-mini"}
+  ]
+}

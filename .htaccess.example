@@ -1,0 +1,28 @@
+# ============================================================
+# Mizban AI Gateway — example .htaccess (Apache / cPanel)
+# Copy to the deployment directory and rename to `.htaccess`.
+# ============================================================
+
+# Deny direct access to sensitive files
+<FilesMatch "(^\.env|\.log$|\.sql$|\.md$|\.json$|composer\.(json|lock)$)">
+    Require all denied
+</FilesMatch>
+
+# Deny access to hidden files/directories (".env", ".freebuff", ...)
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^(\.|\..*|uploads/) - [F,L]
+    # Optional: hide PHP source browsing (already disabled by default)
+</IfModule>
+
+# Disable directory listing
+Options -Indexes
+
+# ------------------------------------------------------------------
+# NOTE:
+#   • If your site is served from a sub-directory, this file applies
+#     only to that directory and below.
+#   • Requests to `api.php`, `index.php`, `cron.php`, `migrate.php`
+#     must stay allowed — do NOT block *.php globally.
+#   • `.env` is also ignored by the application loader if the file is
+#     present but unreachable over HTTP (defense in depth).

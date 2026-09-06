@@ -1,0 +1,14 @@
+{
+  "slug": "nvidia",
+  "name": "ان‌ویدیا (NVIDIA NIM)",
+  "type": "chat",
+  "baseurl": "https://integrate.api.nvidia.com/v1",
+  "driver": "OpenAICompatibleDriver",
+  "actions": ["chat", "models"],
+  "default_model": "mistralai/mistral-medium-3.5-128b",
+  "models": [
+    {"model_id": "mistralai/mistral-medium-3.5-128b", "name": "Mistral Medium 3.5 128B", "fallback": "gpt-4o-mini"},
+    {"model_id": "deepseek-ai/deepseek-v4-flash", "name": "DeepSeek V4 Flash (NVIDIA)", "fallback": "gpt-4o-mini"},
+    {"model_id": "minimaxai/minimax-m3", "name": "MiniMax M3", "fallback": "gpt-4o-mini"}
+  ]
+}

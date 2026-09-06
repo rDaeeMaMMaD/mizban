@@ -1,0 +1,35 @@
+# ============================================================
+# Mizban AI Gateway — .gitignore
+# ============================================================
+
+# ---- Environment / Secrets ----
+.env
+.env.*
+!.env.example
+
+# ---- Runtime logs & data ----
+*.log
+mizban.log
+mizban.log.*
+boroto.log
+boroto.log.*
+uploads/
+*.zip
+*.tar.gz
+*.bak
+*.old
+
+# ---- Editor / OS ----
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# ---- Freebuff workspace metadata ----
+.freebuff/
+
+# ---- Composer / vendor (not used yet, but safe) ----
+vendor/
+composer.lock
